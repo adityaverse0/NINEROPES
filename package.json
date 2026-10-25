@@ -12,7 +12,7 @@
     "preview": "npm --prefix client run preview",
     "deploy": "npx wrangler deploy",
     "deploy:worker": "npx wrangler deploy",
-    "deploy:pages": "npx wrangler pages deploy client/dist --project-name=nineropes",
-    "pages:deploy": "npx wrangler pages deploy client/dist --project-name=nineropes"
+    "deploy:pages": "npx wrangler pages deploy client/dist --project-name=9ropes",
+    "pages:deploy": "npx wrangler pages deploy client/dist --project-name=9ropes"
   }
 }

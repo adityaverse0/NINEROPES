@@ -9,8 +9,8 @@
     "preview": "vite preview --host 0.0.0.0 --port 3000",
     "deploy": "npx wrangler deploy",
     "deploy:worker": "npx wrangler deploy",
-    "deploy:pages": "npx wrangler pages deploy dist --project-name=nineropes",
-    "pages:deploy": "npx wrangler pages deploy dist --project-name=nineropes"
+    "deploy:pages": "npx wrangler pages deploy dist --project-name=9ropes",
+    "pages:deploy": "npx wrangler pages deploy dist --project-name=9ropes"
   },
   "dependencies": {
     "clsx": "^2.1.1",

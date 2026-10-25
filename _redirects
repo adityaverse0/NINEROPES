@@ -1,3 +1,0 @@
-# Cloudflare Pages SPA Routing Rule
-# Maps all incoming client routes to /index.html with HTTP 200
-/*    /index.html   200

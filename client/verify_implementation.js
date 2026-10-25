@@ -86,17 +86,16 @@ async function runVerification() {
     assert(false, `Series verification error: ${err.message}`);
   }
 
-  // 5. Cloudflare Pages Deployment Readiness (SPA _redirects and _headers)
+  // 5. Cloudflare Deployment Readiness (Workers Static Assets SPA config and _headers)
   try {
-    const hasRedirects = fs.existsSync('/data/data/com.termux/files/home/hic/client/dist/_redirects');
     const hasHeaders = fs.existsSync('/data/data/com.termux/files/home/hic/client/dist/_headers');
-    const redirectsContent = hasRedirects ? fs.readFileSync('/data/data/com.termux/files/home/hic/client/dist/_redirects', 'utf-8') : '';
     const headersContent = hasHeaders ? fs.readFileSync('/data/data/com.termux/files/home/hic/client/dist/_headers', 'utf-8') : '';
-    const validRedirects = redirectsContent.includes('/*    /index.html   200');
     const validHeaders = headersContent.includes('Cache-Control') && headersContent.includes('X-Content-Type-Options');
-    assert(hasRedirects && hasHeaders && validRedirects && validHeaders, 'Cloudflare Pages: _redirects (SPA rule) and _headers (caching/security) verified');
+    const wranglerContent = fs.readFileSync('/data/data/com.termux/files/home/Projects/hic/wrangler.toml', 'utf-8');
+    const hasSpaConfig = wranglerContent.includes('not_found_handling = "single-page-application"');
+    assert(hasHeaders && validHeaders && hasSpaConfig, 'Cloudflare Deployment: Workers Static Assets SPA routing and _headers verified');
   } catch (err) {
-    assert(false, `Cloudflare Pages configuration check error: ${err.message}`);
+    assert(false, `Cloudflare configuration check error: ${err.message}`);
   }
 
   // 6. Production Build Artifacts Integrity
