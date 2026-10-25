@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "client"
+  ],
   "scripts": {
-    "build": "npm --prefix client run build",
+    "prebuild": "npm --prefix client install",
+    "build": "npm --prefix client install && npm --prefix client run build",
     "preview": "npm --prefix client run preview",
     "deploy": "npx wrangler pages deploy client/dist"
   }
