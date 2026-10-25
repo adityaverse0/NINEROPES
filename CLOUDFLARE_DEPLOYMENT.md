@@ -11,13 +11,14 @@
 3. Select your repository and configure the build settings:
    - **Project name**: `nineropes` (or your choice)
    - **Production branch**: `main` (or `master`)
-   - **Framework preset**: `Vite`
+   - **Framework preset**: `Vite` (or None)
+   - **Root directory**: `/` (Leave default root)
    - **Build command**: `npm run build`
-   - **Build output directory**: `client/dist` (or `dist` if root directory is set to `client`)
+   - **Build output directory**: `client/dist`
 4. *(Optional)* Add Environment Variables in the Cloudflare dashboard:
    - `VITE_API_BASE_URL` = `https://api.hicine.biz` (Default)
    - `VITE_API_KEY` = `hicine_website_secret_2025_exi9epdmrns` (Default)
-5. Click **Save and Deploy**. Cloudflare will build and publish your site at `https://<your-project>.pages.dev` in ~1 minute.
+5. Click **Save and Deploy**. Cloudflare automatically runs `npm ci` at the repository root (installing all client dependencies via npm workspaces) and builds the site to `client/dist`.
 
 ---
 
