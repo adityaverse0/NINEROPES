@@ -10,6 +10,7 @@
     "prebuild": "npm --prefix client install",
     "build": "npm --prefix client install && npm --prefix client run build",
     "preview": "npm --prefix client run preview",
-    "deploy": "npx wrangler pages deploy client/dist"
+    "deploy": "npx wrangler pages deploy client/dist --project-name=nineropes",
+    "pages:deploy": "npx wrangler pages deploy client/dist --project-name=nineropes"
   }
 }

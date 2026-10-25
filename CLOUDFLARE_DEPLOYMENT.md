@@ -55,3 +55,52 @@ npx wrangler pages deploy client/dist --project-name=nineropes
   - `/assets/*`: Immutable edge cache for 1 year (`max-age=31536000, immutable`).
   - `/*`: Security headers (`X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`).
 - **Preconnected API Domains**: Zero-latency TLS handshakes for `https://api.hicine.biz` and `https://storage.hicine.biz`.
+
+---
+
+## Troubleshooting: "Cloudflare application detection logic has been run in the root of a workspace"
+
+### Why does this error occur?
+If you see the error:
+```
+Cloudflare application detection logic has been run in the root of a workspace instead of targeting a specific project.
+```
+This happens when **`npx wrangler deploy`** (or a Cloudflare Workers CI build) is executed from the repository root:
+1. **`wrangler deploy` is specifically for Cloudflare Workers**, not Cloudflare Pages static assets.
+2. The root `package.json` defines npm workspaces (`"workspaces": ["client"]`). When `wrangler deploy` detects a workspace root without a designated Worker entrypoint, its monorepo detection safely aborts.
+3. This project is a **pure static Vite SPA** that connects to an external API (`https://api.hicine.biz`). It does not run or need a Cloudflare Worker.
+
+### How to Fix:
+
+#### Option A: In Cloudflare Dashboard (Recommended)
+1. Go to **Cloudflare Dashboard** > **Workers & Pages**.
+2. Make sure you select the **Pages** tab (NOT the "Workers" tab) > **Connect to Git**.
+3. Set:
+   - **Framework preset**: `Vite`
+   - **Root directory**: `/`
+   - **Build command**: `npm run build`
+   - **Build output directory**: `client/dist`
+4. Cloudflare Pages natively publishes `client/dist` without invoking `wrangler deploy`.
+
+#### Option B: If Using Cloudflare Workers Builds
+If your project is connected under the "Workers" tab rather than "Pages":
+1. Navigate to your project in Cloudflare Dashboard > **Settings** > **Builds & deployments**.
+2. Change the **Deploy command** from `npx wrangler deploy` to:
+   ```bash
+   npx wrangler pages deploy client/dist --project-name=nineropes
+   ```
+   (Or run: `npm run deploy`)
+
+#### Option C: Local CLI Deployment
+Always deploy using the Pages workflow:
+```bash
+# Correct command from repository root:
+npx wrangler pages deploy client/dist --project-name=nineropes
+
+# Or via npm script:
+npm run deploy
+
+# Or from inside the client/ directory:
+cd client && npm run deploy
+```
+
