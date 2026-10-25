@@ -3,13 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    
+    <!-- Brand & Theme Color -->
     <meta name="theme-color" content="#262624" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)" />
+    
+    <!-- PWA / Native Web App Capabilities -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="NINEROPES" />
+    <meta name="application-name" content="NINEROPES" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="High-speed streaming & direct download cinema catalog with 19,000+ movies & series." />
+
     <title>NINEROPES</title>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- PWA Manifest & App Icons -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+
+    <!-- DNS Prefetch & Preconnect for Edge Speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://storage.hicine.biz" crossorigin>

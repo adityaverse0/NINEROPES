@@ -8,6 +8,7 @@ import { ContentSection } from './components/ContentSection';
 import { MovieDetailsModal } from './components/MovieDetailsModal';
 import { SeriesDetailModal } from './components/SeriesDetailModal';
 import { ScrollToTop } from './components/ScrollToTop';
+import { PWAInstallBanner } from './components/PWAInstallBanner';
 import { X, Film, Tv, Sparkles } from 'lucide-react';
 
 type SearchTypeFilter = 'all' | 'movies' | 'series' | 'anime';
@@ -499,6 +500,9 @@ export const App: React.FC = () => {
         cinemaMode={cinemaMode}
         onCinemaModeChange={setCinemaMode}
       />
+
+      {/* Progressive Web App Install & Offline Banners */}
+      <PWAInstallBanner />
     </div>
   );
 };

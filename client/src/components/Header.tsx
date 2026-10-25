@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CinemaMode, ViewTab } from '../types';
-import { Search, X, History, Sparkles, Sun, Moon, Compass, Flame, Film, Tv } from 'lucide-react';
+import { Search, X, History, Sparkles, Sun, Moon, Compass, Flame, Film, Tv, Download } from 'lucide-react';
 import { NavBar, NavItem } from './ui/tubelight-navbar';
+import { usePWA } from '../services/pwa';
 
 interface HeaderProps {
   activeTab: ViewTab;
@@ -59,8 +60,8 @@ export const Header: React.FC<HeaderProps> = ({
     if (typeof window !== 'undefined') {
       return document.documentElement.classList.contains('dark');
     }
-    return true;
   });
+  const { canInstall, isIos, isStandalone, promptInstall } = usePWA();
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -244,6 +245,19 @@ export const Header: React.FC<HeaderProps> = ({
               Bollywood
             </button>
           </div>
+
+          {/* PWA Install Button (When installable) */}
+          {(canInstall || (isIos && !isStandalone)) && (
+            <button
+              onClick={() => promptInstall()}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 text-xs font-semibold transition active:scale-95 flex-shrink-0"
+              title="Install NINEROPES App"
+              aria-label="Install App"
+            >
+              <Download size={13} />
+              <span className="hidden md:inline">Install App</span>
+            </button>
+          )}
 
           {/* Light / Dark Mode Toggle */}
           <button
