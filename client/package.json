@@ -7,7 +7,9 @@
     "dev": "vite --host 0.0.0.0 --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview --host 0.0.0.0 --port 3000",
-    "deploy": "npx wrangler pages deploy dist --project-name=nineropes",
+    "deploy": "npx wrangler deploy",
+    "deploy:worker": "npx wrangler deploy",
+    "deploy:pages": "npx wrangler pages deploy dist --project-name=nineropes",
     "pages:deploy": "npx wrangler pages deploy dist --project-name=nineropes"
   },
   "dependencies": {
