@@ -64,7 +64,7 @@ export const MovieDetailsModal: React.FC<MovieDetailsModalProps> = ({ movie, onC
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm flex flex-col justify-end sm:justify-center sm:items-center p-0 sm:p-6 animate-fadeIn"
+      className="fixed inset-0 z-[100] overflow-hidden bg-black/60 backdrop-blur-sm flex flex-col justify-end sm:justify-center sm:items-center p-0 sm:p-6 animate-fadeIn"
       onClick={onClose}
     >
       <div 
@@ -90,7 +90,7 @@ export const MovieDetailsModal: React.FC<MovieDetailsModalProps> = ({ movie, onC
         </div>
 
         {/* Scrollable Modal Body */}
-        <div className="overflow-y-auto overscroll-contain flex-1 pb-safe scrollbar-none">
+        <div className="overflow-y-auto overscroll-contain flex-1 pb-8 sm:pb-6 pb-safe scrollbar-none">
           {/* Media Overview */}
           <div className="p-4 sm:p-6 flex flex-row gap-4 sm:gap-5">
             <div className="flex-shrink-0 w-24 sm:w-36 aspect-[2/3] rounded-xl overflow-hidden bg-muted border border-border shadow-sm">

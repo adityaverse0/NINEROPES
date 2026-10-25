@@ -490,19 +490,21 @@ export const App: React.FC = () => {
       {/* Scroll to Top Action */}
       <ScrollToTop />
 
-      {/* Mobile Bottom Navigation */}
-      <BottomBar
-        activeTab={activeTab}
-        onTabChange={tab => {
-          setActiveTab(tab);
-          handleClearSearch();
-        }}
-        cinemaMode={cinemaMode}
-        onCinemaModeChange={setCinemaMode}
-      />
+      {/* Mobile Bottom Navigation - Hidden when media modal is open */}
+      {!selectedItem && (
+        <BottomBar
+          activeTab={activeTab}
+          onTabChange={tab => {
+            setActiveTab(tab);
+            handleClearSearch();
+          }}
+          cinemaMode={cinemaMode}
+          onCinemaModeChange={setCinemaMode}
+        />
+      )}
 
       {/* Progressive Web App Install & Offline Banners */}
-      <PWAInstallBanner />
+      {!selectedItem && <PWAInstallBanner />}
     </div>
   );
 };

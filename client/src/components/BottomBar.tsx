@@ -41,7 +41,7 @@ export const BottomBar: React.FC<BottomBarProps> = memo(({
   onCinemaModeChange,
 }) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden select-none pointer-events-none pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))]">
+    <div className="fixed bottom-0 left-0 right-0 z-30 md:hidden select-none pointer-events-none pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))]">
       {/* Mobile Cinema Filter Floating Capsule */}
       <div className="flex justify-center mb-1.5 pointer-events-auto">
         <div className="flex items-center gap-1 p-0.5 rounded-full bg-background/90 backdrop-blur-md border border-border shadow-md text-[11px]">
