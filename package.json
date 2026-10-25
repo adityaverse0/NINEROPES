@@ -1,0 +1,11 @@
+{
+  "name": "nineropes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix client run build",
+    "preview": "npm --prefix client run preview",
+    "deploy": "npx wrangler pages deploy client/dist"
+  }
+}
